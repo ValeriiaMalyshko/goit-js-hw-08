@@ -8,8 +8,23 @@ initForm ();
 
 form.addEventListener('submit', (event) => {
 event.preventDefault();
-const formData = new FormData(form);
-formData.forEach ((key, value) => console.log (value, key));
+// const formData = new FormData(form);
+// formData.forEach ((key, value) => {
+// if (key === "") {
+//     return alert('Please fill in all the fields!');
+// }
+// else {
+//     console.log (value, key);
+// }
+// });
+const {
+    elements: { email, message },
+  } = event.currentTarget;
+
+  if (email.value === '' || message.value === '') {
+    return alert('Please fill in all the fields!');
+  }
+  console.log(`Email: ${email.value}, message: ${message.value}`);
 event.currentTarget.reset();
 localStorage.removeItem('feedback-form-state'); 
 });
